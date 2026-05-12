@@ -6,7 +6,7 @@ const POSTBOX_URL = "https://answering-machine-postbox.pavannandanmadiraju.worke
 
 interface PostboxMessage {
   id: string;
-  data: string; // base64 encoded encrypted envelope
+  data: string;
 }
 
 interface MessageEnvelope {
@@ -15,7 +15,15 @@ interface MessageEnvelope {
   from_key: string;
   timestamp: number;
   content_type: string;
-  body: string; // encrypted
+  // Old format (v0.1)
+  body?: string;
+  // New format (v0.2) — body + refs encrypted together
+  encrypted_payload?: string;
+}
+
+interface DecryptedPayload {
+  body: string;
+  refs: Array<{ type: string; [key: string]: string | undefined }>;
 }
 
 export function getPostboxUrl(): string {
@@ -40,26 +48,39 @@ export async function syncFromPostbox(): Promise<number> {
     try {
       const envelopeJson = Buffer.from(msg.data, "base64").toString("utf-8");
       const envelope: MessageEnvelope = JSON.parse(envelopeJson);
-
       const senderPublicKey = base58ToPublicKey(envelope.from_key);
-      const decryptedBody = decrypt(envelope.body, senderPublicKey, secretKey);
+
+      let body: string;
+      let refs = "[]";
+
+      if (envelope.encrypted_payload) {
+        // New format: decrypt payload containing both body and refs
+        const payloadJson = decrypt(envelope.encrypted_payload, senderPublicKey, secretKey);
+        const payload: DecryptedPayload = JSON.parse(payloadJson);
+        body = payload.body;
+        refs = JSON.stringify(payload.refs || []);
+      } else if (envelope.body) {
+        // Old format: body was the encrypted field directly
+        body = decrypt(envelope.body, senderPublicKey, secretKey);
+      } else {
+        continue;
+      }
 
       storeMessage({
         id: envelope.id,
         from_name: envelope.from_name,
         from_key: envelope.from_key,
         timestamp: envelope.timestamp,
-        content_type: envelope.content_type,
-        body: decryptedBody,
+        content_type: envelope.content_type || "text/markdown",
+        body,
+        refs,
       });
 
-      // Confirm receipt — delete from postbox
       await fetch(`${POSTBOX_URL}/pick/${recipientId}/${msg.id}`, {
         method: "DELETE",
       });
       count++;
     } catch (e) {
-      // Skip messages that can't be decrypted (not for us, corrupted, etc.)
       console.error(`Failed to process message ${msg.id}:`, e);
     }
   }

@@ -81,9 +81,12 @@ server.tool(
   {
     to: z.string().describe("Contact name (or part of their name)"),
     message: z.string().describe("The message to send (markdown supported)"),
+    refs: z.array(z.record(z.string())).optional().describe(
+      "Optional references to attach (e.g. Figma files, Confluence pages, Jira tickets, URLs). Each ref is an object with a 'type' field and any relevant keys like url, file_key, node_id, page_id, issue_key, label."
+    ),
   },
-  async ({ to, message }) => ({
-    content: [{ type: "text", text: await send(to, message) }],
+  async ({ to, message, refs }) => ({
+    content: [{ type: "text", text: await send(to, message, refs as any) }],
   })
 );
 

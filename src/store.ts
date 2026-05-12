@@ -3,6 +3,11 @@ import { getDbPath } from "./identity.js";
 
 let db: Database.Database | null = null;
 
+export interface MessageRef {
+  type: string;
+  [key: string]: string | undefined;
+}
+
 export interface StoredMessage {
   id: string;
   from_name: string;
@@ -10,6 +15,7 @@ export interface StoredMessage {
   timestamp: number;
   content_type: string;
   body: string;
+  refs: string; // JSON array of MessageRef
   read: number;
 }
 
@@ -25,6 +31,7 @@ export function getDb(): Database.Database {
         timestamp INTEGER NOT NULL,
         content_type TEXT NOT NULL DEFAULT 'text/markdown',
         body TEXT NOT NULL,
+        refs TEXT NOT NULL DEFAULT '[]',
         read INTEGER NOT NULL DEFAULT 0
       )
     `);
@@ -35,10 +42,10 @@ export function getDb(): Database.Database {
 export function storeMessage(msg: Omit<StoredMessage, "read">): void {
   const db = getDb();
   const stmt = db.prepare(`
-    INSERT OR IGNORE INTO messages (id, from_name, from_key, timestamp, content_type, body, read)
-    VALUES (?, ?, ?, ?, ?, ?, 0)
+    INSERT OR IGNORE INTO messages (id, from_name, from_key, timestamp, content_type, body, refs, read)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 0)
   `);
-  stmt.run(msg.id, msg.from_name, msg.from_key, msg.timestamp, msg.content_type, msg.body);
+  stmt.run(msg.id, msg.from_name, msg.from_key, msg.timestamp, msg.content_type, msg.body, msg.refs || "[]");
 }
 
 export function getUnreadMessages(): StoredMessage[] {

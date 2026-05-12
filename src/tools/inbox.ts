@@ -1,6 +1,22 @@
-import { getUnreadMessages, getAllMessages, getMessage, markAsRead, markAllAsRead, StoredMessage } from "../store.js";
+import { getUnreadMessages, getAllMessages, getMessage, markAsRead, markAllAsRead, StoredMessage, MessageRef } from "../store.js";
 import { syncFromPostbox } from "../sync.js";
 import { loadIdentity } from "../identity.js";
+
+function formatRefs(refsJson: string): string {
+  try {
+    const refs: MessageRef[] = JSON.parse(refsJson);
+    if (!refs || refs.length === 0) return "";
+    const lines = refs.map((r) => {
+      const parts = Object.entries(r)
+        .filter(([k, v]) => k !== "type" && v)
+        .map(([k, v]) => `${k}: ${v}`);
+      return `  [${r.type}] ${parts.join(", ")}`;
+    });
+    return `\n\nReferences:\n${lines.join("\n")}`;
+  } catch {
+    return "";
+  }
+}
 
 function formatMessage(msg: StoredMessage, showBody: boolean): string {
   const date = new Date(msg.timestamp * 1000);
@@ -10,9 +26,11 @@ function formatMessage(msg: StoredMessage, showBody: boolean): string {
 
   if (!showBody) {
     const preview = msg.body.length > 80 ? msg.body.slice(0, 80) + "..." : msg.body;
-    return `- ${header}: ${preview}`;
+    const refCount = (() => { try { const r = JSON.parse(msg.refs); return r.length; } catch { return 0; } })();
+    const refTag = refCount > 0 ? ` [${refCount} ref${refCount > 1 ? "s" : ""}]` : "";
+    return `- ${header}${refTag}: ${preview}`;
   }
-  return `**From:** ${msg.from_name}\n**When:** ${date.toLocaleString()}\n**ID:** ${msg.id}\n\n${msg.body}`;
+  return `From: ${msg.from_name}\nWhen: ${date.toLocaleString()}\nID: ${msg.id}\n\n${msg.body}${formatRefs(msg.refs)}`;
 }
 
 function getTimeAgo(date: Date): string {
