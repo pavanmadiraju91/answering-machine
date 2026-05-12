@@ -133,10 +133,6 @@ wrangler deploy
 
 Custom postbox URL support during setup is coming.
 
-## Making the repo public
-
-Safe to do. The repo has source code and a `wrangler.toml` with a KV namespace ID (not sensitive, nobody can write to it without your Cloudflare credentials). No private keys, no secrets.
-
 ## License
 
 MIT
