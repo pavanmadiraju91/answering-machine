@@ -1,8 +1,8 @@
 # Answering Machine
 
-An async messaging tool for Claude Code users. Send messages to colleagues across timezones — they get them next time they open Claude Code.
+Send messages between Claude Code users across timezones. Messages sit in an encrypted postbox until the recipient opens Claude Code and asks for them.
 
-No accounts. No SaaS. No daemon. Messages are end-to-end encrypted and held in a postbox until the recipient picks them up.
+No accounts, no background processes. Your private key stays on your machine.
 
 ## Install
 
@@ -22,7 +22,7 @@ Claude: "Done. Your invite code is:
 
 ## Add a contact
 
-Get their invite code (they share it once via Slack, email, whatever):
+Get their invite code (they share it once, however they want):
 
 ```
 You: "Add Hans-Mueller-CLOUD-RIVER-0562::Ccv6..."
@@ -48,7 +48,7 @@ Claude: "2 new messages:
          - Sarah Chen (1 hour ago): 'PR is up for review'"
 ```
 
-That's it. Messages arrive silently in the background. Ask when you're ready.
+Messages sync silently when the MCP server starts. You read them when you feel like it.
 
 ## How it works
 
@@ -60,10 +60,10 @@ You send a message
   → auto-deletes after 7 days if not picked up
 
 Recipient opens Claude Code
-  → MCP server syncs from postbox in background
+  → MCP server pulls from postbox in background
   → decrypts locally
   → stores in local SQLite
-  → ready when they ask "any messages?"
+  → shows up when they ask
 ```
 
 ## Architecture
@@ -87,16 +87,11 @@ Recipient opens Claude Code
 
 ## Security
 
-- **End-to-end encrypted**: NaCl box (X25519 + XSalsa20-Poly1305)
-- **Postbox is blind**: sees only encrypted bytes, can't read content
-- **No accounts**: identity is a local keypair, never leaves your machine
-- **No tracking**: postbox doesn't know who sent what, only the recipient ID (a public key hash)
+Encryption is NaCl box (X25519 + XSalsa20-Poly1305). The postbox only sees encrypted bytes and a recipient ID (derived from a public key). It can't read content, identify senders, or correlate messages to real people.
 
-## Privacy
+Your private key lives in `~/.config/answering-machine/identity.json` and never leaves your machine. Messages are encrypted before they touch the network.
 
-Your private key never leaves `~/.config/answering-machine/identity.json`. Messages are encrypted before they hit the network. The postbox operator (Cloudflare Worker) cannot read message content, sender identity, or correlate messages to real people.
-
-## MCP Tools
+## MCP tools
 
 | Tool | What it does |
 |------|-------------|
@@ -126,7 +121,7 @@ Delete the folder to factory reset.
 
 ## Self-hosting the postbox
 
-The default postbox is a Cloudflare Worker included in this repo (`postbox/`). To run your own:
+The default postbox is a Cloudflare Worker in `postbox/`. To run your own:
 
 ```bash
 cd postbox
@@ -136,16 +131,11 @@ wrangler kv namespace create "MAILBOX"
 wrangler deploy
 ```
 
-Then tell users to set a custom postbox URL during setup (feature coming).
+Custom postbox URL support during setup is coming.
 
 ## Making the repo public
 
-This repo is safe to make public. It contains:
-- The MCP server source code (open source, MIT)
-- The Cloudflare Worker source code (generic, no secrets)
-- No private keys, no credentials, no sensitive data
-
-The `wrangler.toml` has your KV namespace ID — this is not sensitive. Others can't write to your KV without your Cloudflare credentials.
+Safe to do. The repo has source code and a `wrangler.toml` with a KV namespace ID (not sensitive, nobody can write to it without your Cloudflare credentials). No private keys, no secrets.
 
 ## License
 
