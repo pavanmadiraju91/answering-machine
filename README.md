@@ -1,6 +1,6 @@
 # Answering Machine
 
-Send messages between Claude Code users across timezones. Messages sit in an encrypted postbox until the recipient opens Claude Code and asks for them.
+Send messages between Claude Code users. Messages sit in an encrypted postbox until the recipient opens Claude Code and asks for them.
 
 No accounts, no background processes. Your private key stays on your machine.
 

@@ -1,7 +1,7 @@
 {
   "name": "answering-machine",
   "version": "0.1.0",
-  "description": "Async messaging between Claude Code users across timezones. Encrypted. No accounts.",
+  "description": "Leave messages for other Claude Code users. Encrypted. No accounts.",
   "type": "module",
   "bin": {
     "answering-machine": "./dist/index.js"
