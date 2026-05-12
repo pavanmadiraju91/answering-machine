@@ -4,3 +4,4 @@ postbox/node_modules/
 *.db
 test-e2e.mjs
 .wrangler/
+.npmrc

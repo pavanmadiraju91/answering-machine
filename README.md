@@ -13,10 +13,10 @@ claude mcp add answering-machine -- npx @pavan_nandan/answering-machine
 ## Setup
 
 ```
-You: "Set up my answering machine as Pavan Madiraju"
+You: "Set up my answering machine as Pavan"
 
 Claude: "Done. Your invite code is:
-         Pavan-Madiraju-OPAL-PEARL-8625::FhBe...
+         Pavan-OPAL-PEARL-8625::FhBe...
          Share it with anyone you want to message with."
 ```
 
