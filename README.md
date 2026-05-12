@@ -10,6 +10,8 @@ No accounts, no background processes. Your private key stays on your machine.
 claude mcp add answering-machine -- npx answering-machine
 ```
 
+Package: [answering-machine on npm](https://www.npmjs.com/package/answering-machine)
+
 ## Setup
 
 ```
