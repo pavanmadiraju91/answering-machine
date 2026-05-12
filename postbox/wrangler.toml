@@ -1,0 +1,7 @@
+name = "answering-machine-postbox"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[[kv_namespaces]]
+binding = "MAILBOX"
+id = "d25edebd1f9b41b5a2520aea59676343"
