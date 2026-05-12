@@ -121,17 +121,43 @@ Delete the folder to factory reset.
 
 ## Self-hosting the postbox
 
-The default postbox is a Cloudflare Worker in `postbox/`. To run your own:
+By default, everyone shares one postbox. If you want your own (for privacy, your org, or just because), deploy the same Worker under your Cloudflare account.
+
+You need: a free Cloudflare account and the `wrangler` CLI.
 
 ```bash
-cd postbox
+npm install -g wrangler
+wrangler login
+
+git clone https://github.com/pavanmadiraju91/answering-machine
+cd answering-machine/postbox
 npm install
 wrangler kv namespace create "MAILBOX"
-# update wrangler.toml with the namespace ID
+```
+
+That gives you a namespace ID. Open `wrangler.toml` and replace the existing ID with yours:
+
+```toml
+[[kv_namespaces]]
+binding = "MAILBOX"
+id = "YOUR_NAMESPACE_ID_HERE"
+```
+
+Then deploy:
+
+```bash
 wrangler deploy
 ```
 
-Custom postbox URL support during setup is coming.
+You'll get a URL like `https://answering-machine-postbox.yourname.workers.dev`.
+
+Now tell Claude Code to use it when you set up:
+
+```
+"Set up my answering machine as Hans, use postbox https://answering-machine-postbox.yourname.workers.dev"
+```
+
+Your invite code will point people to your postbox. Messages sent to you go there instead of the default.
 
 ## License
 
