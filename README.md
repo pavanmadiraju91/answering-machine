@@ -7,7 +7,7 @@ No accounts, no background processes. Your private key stays on your machine.
 ## Install
 
 ```bash
-claude mcp add answering-machine -- npx @pavan_nandan/answering-machine
+claude mcp add answering-machine -- npx answering-machine
 ```
 
 ## Setup
