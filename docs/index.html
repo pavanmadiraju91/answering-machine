@@ -472,11 +472,21 @@
 <!-- HERO -->
 <section class="hero">
   <h1 class="hero-title reveal">Answering Machine</h1>
-  <p class="hero-sub reveal reveal-delay-1">Messages between developers. Encrypted. Async. No accounts.</p>
+  <p class="hero-sub reveal reveal-delay-1">You send it. They get it later. Nobody has to be online at the same time.</p>
   <div class="install-cmd reveal reveal-delay-2" onclick="copyCmd(this)">
     <span class="tag">install</span>
     <code>claude mcp add answering-machine -- npx answering-machine</code>
     <div class="copied-toast">copied to clipboard</div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="how-section" style="min-height: auto; padding-bottom: 40px;">
+  <div class="section-tag reveal">Why this exists</div>
+  <div class="reveal reveal-delay-1" style="max-width: 560px; text-align: center; color: var(--dim); font-size: 13px; line-height: 2.2;">
+    <p style="margin-bottom: 20px;">The old answering machine had one good idea: it never interrupted you. Messages piled up while you were out. A blinking light when you got home. You checked when you felt like it.</p>
+    <p style="margin-bottom: 20px;">This works the same way. Your colleague sends you something. It waits in an encrypted postbox. Next time you open Claude Code, it's there. No notification. No ping. No "are you there?"</p>
+    <p>Two people, different timezones, different schedules. Messages cross in the gap between. That's it.</p>
   </div>
 </section>
 
@@ -530,63 +540,63 @@
 
 <!-- ARCHITECTURE -->
 <section class="arch-section">
-  <div class="section-tag reveal">Architecture</div>
+  <div class="section-tag reveal">What happens when you send</div>
   <div class="arch-wrap reveal reveal-delay-1" id="archWrap">
     <div class="arch-card">
-      <div class="arch-card-title">Your Claude Code</div>
-      <div class="arch-card-desc">MCP server encrypts<br>with recipient's key</div>
+      <div class="arch-card-title">You</div>
+      <div class="arch-card-desc">Message gets locked<br>with their key. Only they<br>can open it.</div>
     </div>
     <div class="arch-arrow">
       <div class="arch-arrow-line"></div>
-      <span class="arch-arrow-label">encrypted</span>
+      <span class="arch-arrow-label">sealed</span>
       <div class="arch-arrow-line"></div>
     </div>
     <div class="arch-card center" id="postboxCard">
       <div class="arch-card-title">Postbox</div>
-      <div class="arch-card-desc">Holds blobs. Blind.<br>Deletes on pickup.</div>
+      <div class="arch-card-desc">Holds the sealed message.<br>Can't read it. Doesn't know<br>what's inside.</div>
     </div>
     <div class="arch-arrow">
       <div class="arch-arrow-line"></div>
-      <span class="arch-arrow-label">encrypted</span>
+      <span class="arch-arrow-label">sealed</span>
       <div class="arch-arrow-line"></div>
     </div>
     <div class="arch-card">
-      <div class="arch-card-title">Their Claude Code</div>
-      <div class="arch-card-desc">MCP server pulls<br>and decrypts locally</div>
+      <div class="arch-card-title">Them</div>
+      <div class="arch-card-desc">Opens Claude Code.<br>Message is already there.<br>Unlocks and reads it.</div>
     </div>
   </div>
 </section>
 
 <!-- SECURITY -->
 <section class="security-section">
-  <div class="section-tag reveal">Security</div>
+  <div class="section-tag reveal">Nobody reads your mail</div>
   <div class="lock-ring reveal reveal-delay-1">
     <span class="lock-icon">&#x1f512;</span>
   </div>
   <div class="sec-grid reveal reveal-delay-2">
     <div class="sec-card">
-      <div class="sec-card-title">encryption</div>
-      <div class="sec-card-text">NaCl box. X25519 + XSalsa20-Poly1305. End-to-end.</div>
+      <div class="sec-card-title">sealed end-to-end</div>
+      <div class="sec-card-text">Messages are locked before they leave your machine. Only the recipient's key opens them.</div>
     </div>
     <div class="sec-card">
-      <div class="sec-card-title">postbox</div>
-      <div class="sec-card-text">Sees encrypted bytes. Can't read content or identify senders.</div>
+      <div class="sec-card-title">postbox is blind</div>
+      <div class="sec-card-text">The server in the middle holds sealed bytes. It can't read them, can't see who sent them.</div>
     </div>
     <div class="sec-card">
-      <div class="sec-card-title">identity</div>
-      <div class="sec-card-text">Local keypair. Never uploaded. No server accounts.</div>
+      <div class="sec-card-title">no accounts</div>
+      <div class="sec-card-text">Your identity is a key on your machine. You never register, sign up, or hand over an email.</div>
     </div>
     <div class="sec-card">
-      <div class="sec-card-title">ephemeral</div>
-      <div class="sec-card-text">Messages auto-delete from postbox after pickup or 7 days.</div>
+      <div class="sec-card-title">messages disappear</div>
+      <div class="sec-card-text">The postbox deletes messages after you pick them up. If you don't, they vanish in 7 days.</div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <div class="cta-title reveal">One command.</div>
-  <div class="cta-sub reveal reveal-delay-1">Install. Set your name. Share your code. Done.</div>
+  <div class="cta-title reveal">Leave someone a message.</div>
+  <div class="cta-sub reveal reveal-delay-1">One command to install. One code to share. Then just talk.</div>
   <div class="install-cmd reveal reveal-delay-2" onclick="copyCmd(this)">
     <span class="tag">install</span>
     <code>claude mcp add answering-machine -- npx answering-machine</code>
