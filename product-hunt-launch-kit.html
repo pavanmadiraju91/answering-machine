@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Answering Machine — Product Hunt Launch Kit</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f1a; color: #e0e0e0; padding: 40px 20px; line-height: 1.7; }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { color: #4f8ff7; font-size: 2rem; margin-bottom: 8px; }
+    h2 { color: #ff2266; font-size: 1.4rem; margin-top: 48px; margin-bottom: 12px; border-bottom: 1px solid #2a2a4e; padding-bottom: 8px; }
+    h3 { color: #ffcc00; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .subtitle { color: #667788; margin-bottom: 32px; }
+    .copy-section { background: #1a1a2e; border: 1px solid #2a2a4e; border-radius: 8px; padding: 20px; margin: 12px 0; position: relative; }
+    .copy-section:hover { border-color: #4f8ff7; }
+    .copy-btn { position: absolute; top: 12px; right: 12px; background: #4f8ff7; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; }
+    .copy-btn:hover { background: #3b7de6; }
+    .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #667788; margin-bottom: 6px; }
+    .char-count { font-size: 11px; color: #667788; margin-top: 6px; }
+    .content { white-space: pre-wrap; font-size: 15px; }
+    .tip { background: #1a1a2e; border-left: 3px solid #ffcc00; padding: 12px 16px; margin: 12px 0; font-size: 14px; color: #ccddee; }
+    .required { color: #ff2266; font-weight: bold; font-size: 11px; }
+    .optional { color: #667788; font-size: 11px; }
+    ul { padding-left: 20px; margin: 8px 0; }
+    li { margin: 6px 0; font-size: 14px; }
+    a { color: #4f8ff7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .section-number { display: inline-block; background: #ff2266; color: white; width: 24px; height: 24px; text-align: center; line-height: 24px; border-radius: 50%; font-size: 12px; font-weight: bold; margin-right: 8px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+    th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #2a2a4e; font-size: 14px; }
+    th { color: #4f8ff7; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Answering Machine — Product Hunt Launch Kit</h1>
+    <p class="subtitle">Every field, every word. Copy-paste into the PH submission form.</p>
+
+    <div class="tip">
+      <strong>Product Hunt requires:</strong> URL + Tagline + Description + 2+ Gallery Images (1270x760px) + Topics + Thumbnail (240x240px).
+    </div>
+
+    <!-- SECTION 1 -->
+    <h2><span class="section-number">1</span> Required Fields</h2>
+
+    <h3>Product URL <span class="required">REQUIRED</span></h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">https://pavanmadiraju91.github.io/answering-machine/</div>
+    </div>
+
+    <h3>Product Name <span class="required">REQUIRED</span></h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Answering Machine</div>
+    </div>
+
+    <h3>Tagline <span class="required">REQUIRED — 60 chars max</span></h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Message other Claude users through your Claude Code</div>
+      <div class="char-count">50 characters</div>
+    </div>
+
+    <h3>Short Description <span class="required">REQUIRED — 260 chars max</span></h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Send a colleague a code snippet, feedback on a doc, or a quick question — right from Claude Code. They see it next time they open theirs. Messages are encrypted and sit in a postbox until picked up. One install command, no accounts.</div>
+      <div class="char-count">247 characters</div>
+    </div>
+
+    <h3>Topics <span class="required">REQUIRED — select up to 3</span></h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Developer Tools
+Messaging
+Open Source</div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <h2><span class="section-number">2</span> Gallery Images <span class="required">REQUIRED — min 2, 1270x760px</span></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">
+      <div style="background:#12121f;border:1px solid #2a2a4e;border-radius:8px;overflow:hidden">
+        <img src="ph-assets/01-hero.png" style="width:100%;display:block">
+        <div style="padding:8px 12px;font-size:12px;color:#99aabb;display:flex;justify-content:space-between;align-items:center">
+          <span>01-hero.png (1270x760)</span>
+          <a href="ph-assets/01-hero.png" download style="background:#4f8ff7;color:#fff;border:none;padding:4px 10px;border-radius:3px;font-size:11px;font-weight:bold;text-decoration:none">DOWNLOAD</a>
+        </div>
+      </div>
+      <div style="background:#12121f;border:1px solid #2a2a4e;border-radius:8px;overflow:hidden">
+        <img src="ph-assets/02-terminal-flow.png" style="width:100%;display:block">
+        <div style="padding:8px 12px;font-size:12px;color:#99aabb;display:flex;justify-content:space-between;align-items:center">
+          <span>02-terminal-flow.png (1270x760)</span>
+          <a href="ph-assets/02-terminal-flow.png" download style="background:#4f8ff7;color:#fff;border:none;padding:4px 10px;border-radius:3px;font-size:11px;font-weight:bold;text-decoration:none">DOWNLOAD</a>
+        </div>
+      </div>
+      <div style="background:#12121f;border:1px solid #2a2a4e;border-radius:8px;overflow:hidden">
+        <img src="ph-assets/03-encryption-cards.png" style="width:100%;display:block">
+        <div style="padding:8px 12px;font-size:12px;color:#99aabb;display:flex;justify-content:space-between;align-items:center">
+          <span>03-encryption-cards.png (1270x760)</span>
+          <a href="ph-assets/03-encryption-cards.png" download style="background:#4f8ff7;color:#fff;border:none;padding:4px 10px;border-radius:3px;font-size:11px;font-weight:bold;text-decoration:none">DOWNLOAD</a>
+        </div>
+      </div>
+      <div style="background:#12121f;border:1px solid #2a2a4e;border-radius:8px;overflow:hidden">
+        <img src="ph-assets/04-cta.png" style="width:100%;display:block">
+        <div style="padding:8px 12px;font-size:12px;color:#99aabb;display:flex;justify-content:space-between;align-items:center">
+          <span>04-cta.png (1270x760)</span>
+          <a href="ph-assets/04-cta.png" download style="background:#4f8ff7;color:#fff;border:none;padding:4px 10px;border-radius:3px;font-size:11px;font-weight:bold;text-decoration:none">DOWNLOAD</a>
+        </div>
+      </div>
+    </div>
+
+    <h3>Thumbnail <span class="required">REQUIRED — 240x240px</span></h3>
+    <div style="display:inline-block;background:#12121f;border:1px solid #2a2a4e;border-radius:8px;overflow:hidden;margin:12px 0">
+      <img src="ph-assets/05-thumbnail-240.png" style="width:240px;height:240px;display:block">
+      <div style="padding:8px 12px;font-size:12px;color:#99aabb;display:flex;justify-content:space-between;align-items:center">
+        <span>05-thumbnail-240.png</span>
+        <a href="ph-assets/05-thumbnail-240.png" download style="background:#4f8ff7;color:#fff;border:none;padding:4px 10px;border-radius:3px;font-size:11px;font-weight:bold;text-decoration:none">DOWNLOAD</a>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <h2><span class="section-number">3</span> Maker's First Comment <span class="optional">OPTIONAL but important — pin this</span></h2>
+
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">I kept doing this thing where I'd be deep in a file, find something a colleague needs to know, and then tab to Slack to tell them. By the time I've pasted the context and explained what I'm looking at, I've lost the thread of what I was doing.
+
+So I built this. Now I just say "send Hans: auth doc has an issue on line 47, the token refresh is wrong" and it goes. Hans gets it next time he opens Claude Code. I don't leave my terminal, he doesn't get pinged at 2am.
+
+You share an invite code once. After that it's just names. Everything is encrypted before it leaves your machine — the postbox in the middle can't read any of it.
+
+It's an MCP server, so Claude handles the whole interaction. You talk to Claude, Claude talks to the postbox.
+
+Open source: https://github.com/pavanmadiraju91/answering-machine</div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <h2><span class="section-number">4</span> Full Description <span class="optional">OPTIONAL — product page body</span></h2>
+
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Send messages to other Claude Code users without leaving your terminal.
+
+You're reviewing code, you spot something, you want to tell someone. Instead of switching to Slack and losing your train of thought, you say: "send Sarah: the retry logic in payments.ts line 84 is going to loop forever, can you look?"
+
+She opens Claude Code the next morning. The message is there.
+
+Install:
+claude mcp add answering-machine -- npx answering-machine
+
+Tell Claude "set up my answering machine" and it gives you an invite code. Share it with a colleague once. After that you just use their name.
+
+Messages are encrypted on your machine before they go anywhere. The postbox (a Cloudflare Worker) holds sealed bytes it can't read and deletes them after pickup. You can self-host the postbox if you want — it's about 50 lines of code.</div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <h2><span class="section-number">5</span> FAQs <span class="optional">OPTIONAL</span></h2>
+
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Q: Is this just Slack?</div>
+      <div class="content">No. You don't leave Claude Code. There are no channels, no threads, no notifications. You send something, it waits until the other person asks for it.</div>
+    </div>
+
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Q: What if both people are offline?</div>
+      <div class="content">The postbox holds it. It's a Cloudflare Worker, always on. When the recipient opens Claude Code, the message syncs down.</div>
+    </div>
+
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Q: Can the postbox read my messages?</div>
+      <div class="content">No. Messages are encrypted on your machine before they leave. The postbox holds bytes it can't decrypt.</div>
+    </div>
+
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Q: Does this only work with Claude Code?</div>
+      <div class="content">Right now, yes. It's an MCP server. If other editors adopt MCP (Cursor, Windsurf, etc.) it would work there too.</div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <h2><span class="section-number">6</span> Social Media Posts</h2>
+
+    <h3>Twitter/X — Launch Day</h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">I kept switching to Slack mid-coding to tell colleagues things. Now I just tell Claude.
+
+"Send Hans: auth doc line 47, token refresh is wrong"
+
+Hans gets it next time he opens Claude Code. Encrypted, no accounts, open source.
+
+claude mcp add answering-machine -- npx answering-machine
+
+[PH LINK]</div>
+    </div>
+
+    <h3>Twitter/X — Thread</h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">1/ I built a way to message people from inside Claude Code. You stay in your terminal, they get the message next time they open theirs.
+
+2/ The thing I kept doing: spot a bug, need to tell someone, switch to Slack, paste context, explain what file I'm in, lose focus, forget what I was actually doing.
+
+3/ Now it's just: "send Hans: payments.ts line 84, the retry logic loops forever"
+
+Done. Back to what I was doing. Hans sees it when he opens Claude Code, could be 5 minutes or 5 hours.
+
+4/ You share an invite code once (like exchanging phone numbers). After that you just use names. Messages are encrypted before they leave your machine.
+
+5/ It's an MCP server. Claude handles sending and checking. You just talk normally. "Any messages?" and Claude shows you what came in.
+
+https://github.com/pavanmadiraju91/answering-machine</div>
+    </div>
+
+    <h3>LinkedIn</h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Built something I keep reaching for at work.
+
+When I'm coding and spot something a colleague needs to know about, I used to switch to Slack, paste context, write an explanation. By the time I'm done, I've lost what I was doing.
+
+Now I tell Claude: "send Sarah: the error handling in checkout.ts is swallowing the payment failure, line 112." Done. She gets it next time she opens Claude Code.
+
+It's called Answering Machine. An MCP server that lets Claude Code users message each other. Messages are encrypted, sit in a postbox until collected, and the whole thing installs with one command.
+
+Open source: https://github.com/pavanmadiraju91/answering-machine</div>
+    </div>
+
+    <h3>Reddit (r/ClaudeAI, r/programming)</h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Title</div>
+      <div class="content">I built a way to message other Claude Code users without leaving the terminal</div>
+    </div>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Body</div>
+      <div class="content">I kept doing the same thing — find something in the code a colleague should know about, switch to Slack, paste a bunch of context, explain where I am, send it, then try to remember what I was doing.
+
+Built an MCP server that lets you send messages to other Claude Code users. You say "send Hans: auth doc line 47, token refresh is broken" and it goes. Hans sees it next time he opens Claude Code.
+
+Setup is: install one command, pick a name, share an invite code with your colleagues once. After that you just use their names.
+
+Messages are encrypted on your machine (NaCl box) before going anywhere. The postbox holds sealed bytes and deletes after pickup.
+
+I'm using it daily with one colleague right now. Mostly short things — "hey this function you wrote has an edge case" or "I pushed the fix you asked about, it's on main."
+
+https://github.com/pavanmadiraju91/answering-machine</div>
+    </div>
+
+    <h3>Hacker News (Show HN)</h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Title</div>
+      <div class="content">Show HN: Answering Machine – message other Claude Code users from your terminal</div>
+    </div>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="label">Body</div>
+      <div class="content">MCP server for Claude Code. You tell Claude to send someone a message — a code snippet, a question, feedback on something you're both working on. They get it next time they open Claude Code.
+
+Install: claude mcp add answering-machine -- npx answering-machine
+
+Messages are NaCl box encrypted on your machine before leaving. Postbox (Cloudflare Worker, ~50 lines) holds sealed bytes, can't read them, deletes after pickup or 7 days. You can self-host the postbox.
+
+No accounts, no background process. Identity is a local keypair. You exchange invite codes once (like phone numbers), then just use names.
+
+Using it with one colleague. Mostly for quick things mid-coding that don't deserve a Slack message but would get lost if I don't send them now.
+
+https://github.com/pavanmadiraju91/answering-machine</div>
+    </div>
+
+    <!-- SECTION 7 -->
+    <h2><span class="section-number">7</span> Support Ask Templates</h2>
+
+    <h3>DM to Friends/Network</h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Hey — made something small, it's on Product Hunt today. It lets you message other Claude Code users right from your terminal. I've been using it to ping a colleague about code stuff without switching to Slack. If you have a sec to look: [PH LINK]</div>
+    </div>
+
+    <h3>Email to Supporters</h3>
+    <div class="copy-section">
+      <button class="copy-btn" onclick="copySection(this)">COPY</button>
+      <div class="content">Subject: Shipped a thing — Answering Machine
+
+Hey,
+
+Put something on Product Hunt today. It's a way to message other Claude Code users from inside your terminal. You send a code snippet or a note, they pick it up next time they open Claude Code. Encrypted, open source, one command to install.
+
+If you have a minute to check it out or drop a comment: [PH LINK]
+
+Thanks.
+— Pavan</div>
+    </div>
+
+    <!-- SECTION 8 -->
+    <h2><span class="section-number">8</span> Launch Day Checklist</h2>
+
+    <ul>
+      <li>Schedule launch for 12:01 AM PT (PH resets at midnight PT)</li>
+      <li>Post maker's comment immediately</li>
+      <li>Tweet with PH link</li>
+      <li>Post LinkedIn</li>
+      <li>Submit to HN (Show HN)</li>
+      <li>Post on r/ClaudeAI and r/programming</li>
+      <li>DM 10-15 people who use Claude Code</li>
+      <li>Respond to every PH comment within first 6 hours</li>
+      <li>Share in Claude Code Discord/community channels</li>
+    </ul>
+
+    <!-- SECTION 9 -->
+    <h2><span class="section-number">9</span> Field Reference</h2>
+
+    <table>
+      <tr><th>Field</th><th>Status</th><th>Notes</th></tr>
+      <tr><td>Product URL</td><td>Done</td><td>GitHub Pages site</td></tr>
+      <tr><td>Name</td><td>Done</td><td>Answering Machine</td></tr>
+      <tr><td>Tagline</td><td>Done</td><td>50 chars</td></tr>
+      <tr><td>Short description</td><td>Done</td><td>247 chars</td></tr>
+      <tr><td>Topics</td><td>Done</td><td>Developer Tools, Messaging, Open Source</td></tr>
+      <tr><td>Gallery images</td><td>Done</td><td>4 screenshots in ph-assets/</td></tr>
+      <tr><td>Thumbnail</td><td>Done</td><td>240x240 in ph-assets/</td></tr>
+      <tr><td>Maker comment</td><td>Done</td><td>Section 3</td></tr>
+      <tr><td>Full description</td><td>Done</td><td>Section 4</td></tr>
+      <tr><td>FAQs</td><td>Done</td><td>4 questions</td></tr>
+    </table>
+
+  </div>
+
+  <script>
+    function copySection(btn) {
+      const section = btn.parentElement;
+      const content = section.querySelector('.content');
+      navigator.clipboard.writeText(content.textContent.trim());
+      btn.textContent = 'COPIED';
+      btn.style.background = '#28c840';
+      setTimeout(() => { btn.textContent = 'COPY'; btn.style.background = '#4f8ff7'; }, 1500);
+    }
+  </script>
+</body>
+</html>
